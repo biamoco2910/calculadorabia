@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculadora panda</title>
+    <style>
+        body {
+            background-color: #2d53ff;
+        }
+
+        .container {
+            width: 300px;
+            margin: auto;
+            padding-top: 20px;
+        }
+
+        .btn {
+            width: 85px;
+            height: 85px;
+            font-size: 35px;
+            text-align: center;
+            border-radius: 50px;
+            margin: 6px;
+            background-color: #f5fb47;
+            color: #06f301;
+        }
+
+        .btn:hover {
+            background-color: #c4d909;
+        }
+
+        .display {
+            width: 120%;
+            height: 45px;
+            font-size: 35px;
+            border-radius: 40px;
+            border: 3px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <input type="text" id="display" class="display" disabled><br>
+
+        <button class="btn" onclick="appendNumber('7')">7</button>
+        <button class="btn" onclick="appendNumber('8')">8</button>
+        <button class="btn" onclick="appendNumber('9')">9</button><br>
+
+        <button class="btn" onclick="appendNumber('4')">4</button>
+        <button class="btn" onclick="appendNumber('5')">5</button>
+        <button class="btn" onclick="appendNumber('6')">6</button><br>
+
+        <button class="btn" onclick="appendNumber('1')">1</button>
+        <button class="btn" onclick="appendNumber('2')">2</button>
+        <button class="btn" onclick="appendNumber('3')">3</button><br>
+
+        <button class="btn" onclick="deleteLast()">C</button>
+        <button class="btn" onclick="appendNumber('0')">0</button>
+        <button class="btn" onclick="calculate()">=</button><br>
+
+        <button class="btn" onclick="appendOperator('+')">+</button>
+        <button class="btn" onclick="appendOperator('-')">-</button>
+        <button class="btn" onclick="appendOperator('*')">*</button><br>
+
+        <button class="btn" onclick="appendOperator('/')">/</button>
+    </div>
+
+    <script>
+        function appendNumber(number) {
+            document.getElementById('display').value += number;
+        }
+
+        function appendOperator(operator) {
+            document.getElementById('display').value += operator;
+        }
+
+        function deleteLast() {
+            var displayValue = document.getElementById('display').value;
+            document.getElementById('display').value = displayValue.slice(0, -1);
+        }
+
+        function calculate() {
+            var expression = document.getElementById('display').value;
+            var result = eval(expression);
+            document.getElementById('display').value = result;
+        }
+    </script>
+</body>
+</html>
